@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anvarjon Olimjonov - SysAdmin & Backend Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background: #0a0e27;
+            color: #00ff41;
+            overflow-x: hidden;
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+        }
+
+        .glitch {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: #00ff41;
+            position: relative;
+            text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41, 0 0 30px #00ff41;
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% {
+                text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+            }
+            95% {
+                text-shadow: 2px 0 #ff0000, -2px 0 #00ffff, 0 0 30px #00ff41;
+            }
+        }
+
+        .terminal-window {
+            background: rgba(10, 14, 39, 0.9);
+            border: 2px solid #00ff41;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+            position: relative;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .btn-red { background: #ff5f56; }
+        .btn-yellow { background: #ffbd2e; }
+        .btn-green { background: #27c93f; }
+
+        .terminal-content {
+            font-family: 'Share Tech Mono', monospace;
+            color: #00ff41;
+        }
+
+        .typing-effect {
+            overflow: hidden;
+            border-right: 2px solid #00ff41;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00ff41 }
+        }
+
+        .skill-card {
+            background: rgba(10, 14, 39, 0.8);
+            border: 1px solid #00ff41;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0, 255, 65, 0.4);
+            border-color: #00ffff;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: #00ff41;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px #00ff41;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            color: #00ff41;
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 50px 0 30px;
+            text-shadow: 0 0 10px #00ff41;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00ff41, transparent);
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #00ff41, #00ffff);
+            box-shadow: 0 0 10px #00ff41;
+        }
+
+        .btn-custom {
+            background: transparent;
+            border: 2px solid #00ff41;
+            color: #00ff41;
+            padding: 12px 30px;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-custom:hover {
+            background: #00ff41;
+            color: #0a0e27;
+            box-shadow: 0 0 20px #00ff41;
+        }
+
+        .contact-info {
+            font-size: 1.2rem;
+            color: #00ffff;
+        }
+
+        .contact-info i {
+            color: #00ff41;
+            margin-right: 10px;
+        }
+
+        .navbar {
+            background: rgba(10, 14, 39, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #00ff41;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #00ff41 !important;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .nav-link:hover {
+            color: #00ffff !important;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .hexagon {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff41, transparent);
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        footer {
+            background: rgba(10, 14, 39, 0.95);
+            border-top: 1px solid #00ff41;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #00ff41;
+        }
+
+        .timeline-item {
+            margin: 30px 0;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrix"></canvas>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">&lt;/AO&gt;</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="scan-line"></div>
+        <div class="container text-center">
+            <h1 class="glitch mb-4">ANVARJON OLIMJONOV</h1>
+            <div class="terminal-window mx-auto" style="max-width: 800px;">
+                <div class="terminal-header">
+                    <div class="terminal-btn btn-red"></div>
+                    <div class="terminal-btn btn-yellow"></div>
+                    <div class="terminal-btn btn-green"></div>
+                </div>
+                <div class="terminal-content">
+                    <p class="mb-2">$ whoami</p>
+                    <p class="mb-2">> System Administrator | Backend Developer | Network Specialist</p>
+                    <p class="mb-2">$ cat skills.txt</p>
+                    <p class="mb-2">> Linux Server | Windows Server | PHP Laravel | Kerio Control | MikroTik</p>
+                    <p class="mb-2">$ locate current_position</p>
+                    <p class="mb-0">> Hackathon IT School | <span class="typing-effect">Ready for new challenges...</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="section-title">TECHNICAL ARSENAL</h2>
+            
+            <div class="row g-4 mt-4">
+                <div class="col-md-4">
+                    <div class="skill-card text-center">
+                        <i class="fas fa-server skill-icon"></i>
+                        <h4>System Administration</h4>
+                        <div class="progress mt-3" style="height: 8px;">
+                            <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                        </div>
+                        <p class="mt-3 mb-0">Linux & Windows Server</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="skill-card text-center">
+                        <i class="fas fa-code skill-icon"></i>
+                        <h4>Backend Development</h4>
+                        <div class="progress mt-3" style="height: 8px;">
+                            <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                        </div>
+                        <p class="mt-3 mb-0">PHP Laravel Framework</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="skill-card text-center">
+                        <i class="fas fa-network-wired skill-icon"></i>
+                        <h4>Network Engineering</h4>
+                        <div class="progress mt-3" style="height: 8px;">
+                            <div class="progress-bar" role="progressbar" style="width: 88%"></div>
+                        </div>
+                        <p class="mt-3 mb-0">Kerio Control | MikroTik</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-3">
+                <div class="col-md-6">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-btn btn-red"></div>
+                            <div class="terminal-btn btn-yellow"></div>
+                            <div class="terminal-btn btn-green"></div>
+                        </div>
+                        <div class="terminal-content">
+                            <p class="mb-2">$ cat technical_skills.json</p>
+                            <p class="mb-1">{</p>
+                            <p class="mb-1 ms-3">"operating_systems": ["Linux", "Windows Server"],</p>
+                            <p class="mb-1 ms-3">"programming": ["PHP", "Laravel"],</p>
+                            <p class="mb-1 ms-3">"networking": ["Kerio Control", "MikroTik"],</p>
+                            <p class="mb-1 ms-3">"databases": ["MySQL", "PostgreSQL"],</p>
+                            <p class="mb-1 ms-3">"tools": ["Git", "Docker", "Nginx"]</p>
+                            <p class="mb-0">}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-btn btn-red"></div>
+                            <div class="terminal-btn btn-yellow"></div>
+                            <div class="terminal-btn btn-green"></div>
+                        </div>
+                        <div class="terminal-content">
+                            <p class="mb-2">$ cat languages.conf</p>
+                            <p class="mb-1">LANGUAGE_PROFICIENCY:</p>
+                            <p class="mb-1 ms-3">- Uzbek: Native</p>
+                            <p class="mb-1 ms-3">- Korean: Basic (한국어 기초)</p>
+                            <p class="mb-1 ms-3">- English: Basic</p>
+                            <p class="mb-2 ms-3">- Russian: Professional</p>
+                            <p class="mb-0">STATUS: Ready for international projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-5">
+        <div class="container">
+            <h2 class="section-title">EXPERIENCE.LOG</h2>
+            
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <div class="skill-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-briefcase skill-icon me-3" style="font-size: 2rem;"></i>
+                            <div>
+                                <h4 class="mb-1">Hackathon IT School</h4>
+                                <p class="mb-0" style="color: #00ffff;">Current Position</p>
+                            </div>
+                        </div>
+                        <p class="mb-2">• System Administration & Network Management</p>
+                        <p class="mb-2">• Backend Development with Laravel</p>
+                        <p class="mb-0">• Server Infrastructure Maintenance</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="skill-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-graduation-cap skill-icon me-3" style="font-size: 2rem;"></i>
+                            <div>
+                                <h4 class="mb-1">Korea International University</h4>
+                                <p class="mb-0" style="color: #00ffff;">Graduate</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">• IT & Computer Science Education</p>
+                        <p class="mb-0">• International Experience & Korean Language</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="section-title">CONNECT.SH</h2>
+            
+            <div class="row mt-5">
+                <div class="col-md-8 mx-auto">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-btn btn-red"></div>
+                            <div class="terminal-btn btn-yellow"></div>
+                            <div class="terminal-btn btn-green"></div>
+                        </div>
+                        <div class="terminal-content">
+                            <p class="mb-3">$ ssh anvarjon@portfolio.dev</p>
+                            <p class="mb-3">Establishing secure connection...</p>
+                            <div class="contact-info">
+                                <p class="mb-3"><i class="fas fa-envelope"></i> Email: anvarjon.olimjonov@example.com</p>
+                                <p class="mb-3"><i class="fab fa-linkedin"></i> LinkedIn: /in/anvarjon-olimjonov</p>
+                                <p class="mb-3"><i class="fab fa-github"></i> GitHub: @anvarjon</p>
+                                <p class="mb-3"><i class="fas fa-phone"></i> Phone: +998 XX XXX XX XX</p>
+                                <p class="mb-0"><i class="fas fa-map-marker-alt"></i> Location: Uzbekistan</p>
+                            </div>
+                            <p class="mt-4 mb-0">$ status: <span style="color: #00ff41;">AVAILABLE_FOR_OPPORTUNITIES</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button class="btn btn-custom me-3"><i class="fas fa-download me-2"></i>Download CV</button>
+                        <button class="btn btn-custom"><i class="fas fa-paper-plane me-2"></i>Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-2" style="color: #00ff41;">$ echo "Built with passion and dedication"</p>
+            <p class="mb-0" style="color: #00ffff;">© 2024 Anvarjon Olimjonov | All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Matrix rain effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = 'ANVARJONOLIMJONOV01アンヴァルジョン';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(10, 14, 39, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#00ff41';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 35);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Progress bar animation
+        window.addEventListener('scroll', () => {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    bar.style.transition = 'width 1.5s ease-in-out';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
